@@ -8,24 +8,24 @@ winner = 0
 attack = 0
 puan = 0
 enemy_list_index = -1
-TITLE = "Stranger Things" # Oyunun Adı
+TITLE = "Stranger Skulls" # Oyunun Adı
 FPS = 30 # Saniyedeki Kare Sayısı
-map_list = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],  
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],     
+map_list = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0], 
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0], 
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0], 
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0], 
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0], 
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0],  
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 0], 
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],     
           ] # Hücüm Gücü ve Sağlık bilgisi
 
 
@@ -48,30 +48,30 @@ class Sprite(Actor):
     vy = 5
 
     def update(self):
-        if keyboard.right or keyboard.d and self.x + 50 < WIDTH - 50:
+        if (keyboard.right or keyboard.d) and self.x + 50 < WIDTH:
             self.x += 2
             #self.images = [normal]
             #self.image = 'karakter'
             self.direction = "right"
             self.image = "karakter_right_attack" if keyboard.right else "karakter"  # Use 
-        elif keyboard.left or keyboard.a and self.x - hucre.width > hucre.width:
+        elif (keyboard.left or keyboard.a) and self.x - cell.width > cell.width - 30:
             self.x -= 2
             #self.images = []
             #self.image = 'sol'
             self.direction = "left"
             self.image = "karakter_sol_attack" if keyboard.left else "karakter" 
-        elif keyboard.down or keyboard.s and self.y + 50 < HEIGHT - 50*2:
+        elif (keyboard.down or keyboard.s) and self.y + 100 < HEIGHT:
             self.y += 2
-        elif keyboard.up or keyboard.w and self.y - 50 > 50:
+        elif (keyboard.up or keyboard.w) and self.y + 50 > 100:
             self.y -= 2        
 
 
-# cell = Sprite("sinir")
+cell = Sprite("sinir")
 cell1 = Sprite("zemin")
-# cell2 = Sprite("catlak")
-# cell3 = Sprite("kemikler")
+cell2 = Sprite("catlak")
+cell3 = Sprite("kemikler")
 cross = Sprite("carpi")
-cross.pos = (760, 50)
+cross.pos = (770, 30)
 set_sound = Sprite("bonus")
 set_sound.pos = (550, 250)
 exit_the_game = Sprite("bonus")
@@ -91,20 +91,20 @@ my_character = Sprite('karakter')
 my_character.images = ["karakter", "karakter_right_attack"]
 #my_character_left.images = ["sol", "karakter_sol_attack"]
 my_character.fps = 5
-my_character.health = 130
+my_character.health = 100
 my_character.attack = 5
 my_character.top = cell.height
 my_character.left = cell.width
 arkaplan2 = Actor("arkaplan2")
 walking_toggle = True
-image_change_interval = 0.5  # Adjust this for a longer duration if needed
+image_change_interval = 0.25  # Adjust this for a longer duration if needed
 
 # Düşmanların Oluşturulması
 enemies = []
 def form_enemies():
     for i in range(10):
-        x = random.randint(3, 15) * 50
-        y = random.randint(1, 15) * 50
+        x = random.randint(2, 15) * 50
+        y = random.randint(2, 14) * 50
         enemy = Sprite("dusman")
         enemy.topleft = (x, y)
         enemy.health = random.randint(10, 20)
@@ -126,9 +126,22 @@ swords = []
 def map_sketch_menu():
     for i in range(len(map_list)):
         for j in range(len(map_list[0])):
-            cell1.left = cell.width*j
-            cell1.top = cell.height*i
-            cell1.draw()
+            if map_list[i][j] == 0:
+                cell.left = cell.width*j
+                cell.top = cell.height*i
+                cell.draw()
+            elif map_list[i][j] == 1:
+                cell1.left = cell.width*j
+                cell1.top = cell.height*i
+                cell1.draw()
+            elif map_list[i][j] == 2:
+                cell2.left = cell.width*j
+                cell2.top = cell.height*i
+                cell2.draw()
+            elif map_list[i][j] == 3:
+                cell3.left = cell.width*j
+                cell3.top = cell.height*i
+                cell3.draw()
 
 # THE BELOW FUNCTION ADDED LATELY ABOUT CHANGING ENEMY IMAGES CERTAIN AMOUNTS OF TIME IN A SECOND
 def toggle_enemy_images():
@@ -168,13 +181,16 @@ def draw():
         screen.draw.text("Sound Off\n", center = (550, 280), color = "black", fontsize = 35) 
         exit_the_game.draw()
         screen.draw.text("Exit Game\n", center = (400, 430), color = "black", fontsize = 35) 
-        screen.draw.text(str(my_character.pos) + "\n", center = (600, 600), color = "black", fontsize = 35)
+        #screen.draw.text(str(my_character.pos) + "\n", center = (600, 600), color = "black", fontsize = 35)
         #print(oyna.pos, set_sound.pos)
 
 
     elif mod == "play": 
-        if attack == 0:       
-            sounds.thaelmines.play()
+        #if attack == 0:       
+        sounds.thaelmines.play()
+        sounds.winning.stop()
+        sounds.loser.stop()
+
         screen.fill("#2f3542")
         map_sketch_menu()
         my_character.draw()
@@ -191,7 +207,6 @@ def draw():
         for i in range(len(swords)):
             swords[i].draw()
         cross.draw()
-
 
 
     elif mod == "play_sound_off":        
@@ -369,8 +384,8 @@ def update():
         if enemies[i].x < 100 :   #and dusmanlar[i].distance_to(karakter) > 200
             enemies[i].x = 100
             enemy_direction = 1  # Move forward
-        elif enemies[i].x > WIDTH:  # and dusmanlar[i].distance_to(karakter) > 200
-            enemies[i].x = WIDTH
+        elif enemies[i].x > WIDTH - 100:  # and dusmanlar[i].distance_to(karakter) > 200
+            enemies[i].x = WIDTH - 100
             enemy_direction = -1  # Move backward
 
     def change_direction():
